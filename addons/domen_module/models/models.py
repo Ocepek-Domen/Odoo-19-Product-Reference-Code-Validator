@@ -2,8 +2,10 @@ from odoo import models, api, _
 from odoo.exceptions import ValidationError
 
 
-class ValidationMixin:
+class ValidationMixin(models.AbstractModel):
     """Mixin class for default_code validation logic."""
+    _name = 'validation.mixin'
+    _description = 'Mixin class for default_code validation logic'
 
     def _validate_semicolons(self, code):
         """Helper method to validate semicolon count in default_code."""
@@ -12,8 +14,8 @@ class ValidationMixin:
             return None
 
         # Count the number of semicolons in the reference field
-        semicolon_count = code.count(";")
-        if semicolon_count != 0 and semicolon_count != 3:
+        semicolon_count = code.count(';')
+        if semicolon_count not in (0, 3):
             # Return the error message if validation fails
             return _(
                 'Polje mora vsebovati natanko 3 podpičja ";". Polje lahko vsebuje "/" in *.\n\n'
@@ -40,8 +42,8 @@ class ValidationMixin:
         return None
 
 
-class ProductTemplate(models.Model, ValidationMixin):
-    _inherit = 'product.template'
+class ProductTemplate(models.Model):
+    _inherit = ['product.template', 'validation.mixin']
 
     @api.onchange('default_code')
     def _onchange_default_code(self):
@@ -64,8 +66,8 @@ class ProductTemplate(models.Model, ValidationMixin):
                 raise ValidationError(error_message)
 
 
-class ProductProduct(models.Model, ValidationMixin):
-    _inherit = 'product.product'
+class ProductProduct(models.Model):
+    _inherit = ['product.product', 'validation.mixin']
 
     @api.onchange('default_code')
     def _onchange_default_code(self):
