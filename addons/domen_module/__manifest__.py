@@ -41,11 +41,5 @@ The validation ensures data consistency for your product catalog.
     'application': False,
     'auto_install': False,
 
-    'images': ['static/description/icon.png'],
-
-    # always loaded
-    'data': [
-        'views/views.xml',
-        'views/templates.xml',
-    ],
+    'images': ['static/description/icon.png']
 }

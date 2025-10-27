@@ -18,7 +18,7 @@ class ValidationMixin(models.AbstractModel):
         if semicolon_count not in (0, 3):
             # Return the error message if validation fails
             return _(
-                'Polje mora vsebovati natanko 3 podpičja ";". Polje lahko vsebuje "/" in *.\n\n'
+                'Polje mora vsebovati natanko 3 podpičja ";". Polje lahko vsebuje tudi poševnico "/" in zvezdice "*".\n\n'
                 '═══ BASIC (1-on-1) ═══\n'
                 'Xiaomi;Redmi Note 13 Pro 4g;Popravilo kamere;\n'
                 'Apple;iPhone 16 Plus;Menjava baterije;\n'
