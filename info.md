@@ -27,3 +27,7 @@ rescan modula:
 docker compose run --rm web odoo -c /etc/odoo/odoo.conf --db_host=db --db_user=odoo --db_password=odoo -d postgres -u domen_module --stop-after-init --workers=0
 
 **http://localhost:8069/odoo/apps klikni na "Update Apps List"**
+
+
+create new module inside docker:
+docker compose exec web odoo scaffold tracker_connector /mnt/extra-addons

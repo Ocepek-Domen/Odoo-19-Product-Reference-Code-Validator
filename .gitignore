@@ -6,3 +6,4 @@ addons/domen_module/models/__pycache__/__init__.cpython-312.pyc
 addons/domen_module/models/__pycache__/models.cpython-312.pyc
 addons/domen_module/views/templates.xml
 addons/domen_module/views/views.xml
+addons/tracker_connector/*
